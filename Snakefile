@@ -5,7 +5,12 @@ configfile: "config.json"
 rule all:
     input:
         final_gtf = join(config['path']['final'],
-                         config['gtf']['final'] + '.gtf')
+                         config['gtf']['final'] + '.gtf'),
+        gene_only = join(config['path']['final'],
+                         config['database_file']['parsed_final_gene_only']),
+        associated_snoDB = join(config['path']['final'],
+                                config['database_file']['final_snodb']),
+        # tok = join(config['path']['test'], 'overlap.tok')
 
 
 rule download_all:
@@ -125,7 +130,8 @@ rule get_snoRNAs:
         "scripts/snoRNA_to_gtf.py"
 
 rule create_final_annotation:
-    """ Remove the duplicates genes in the annotation """
+    """ Remove the duplicates genes in the annotation and add the missing
+        genes. It also adds the snoDB version in the header """
     input:
         start_ensembl = join(config['path']['ref'],
                              config['gtf']['ensembl'] + '.gtf'),
@@ -147,6 +153,42 @@ rule create_final_annotation:
     shell:
         "cat {input.rRNA_to_delete} {input.snoRNA_to_delete} > data/tmp && "
         "grep -v -f data/tmp {input.start_ensembl} > {output.final_gtf} && "
-        "rm data/tmp && "
+        "grep '^#!' {output.final_gtf} > data/tmp && "
+        "echo '#!snoDB-version 1.1.1' >> data/tmp && "
+        "grep -v '^#!' {output.final_gtf} >> data/tmp && "
+        "mv data/tmp {output.final_gtf} && "
         "cat {input.tRNA_gtf} {input.rRNA_gtf} "
         "{input.blockbuster_gtf} {input.sno_gtf} >> {output.final_gtf}"
+
+rule parse_final_gtf:
+    """ Parse the final gtf to get a tabular full version and another one just
+        for the genes (feature == 'gene') """
+    input:
+        final_gtf = join(config['path']['final'],
+                         config['gtf']['final'] + '.gtf')
+    output:
+        final_parsed = join(config['path']['final'],
+                         config['database_file']['parsed_final']),
+        gene_only = join(config['path']['final'],
+                         config['database_file']['parsed_final_gene_only'])
+    shell:
+        "scripts/gtfParser find_parse {input.final_gtf} > {output.final_parsed} && "
+        "awk -F '\t' '$3 == \"gene\" || NR == 1' {output.final_parsed} > {output.gene_only} "
+
+rule create_associated_snoDB:
+    """ Add a gene_id column corresponding to the gene_id in the gtf """
+    input:
+        gene_only = join(config['path']['final'],
+                         config['database_file']['parsed_final_gene_only']),
+        start_snodb = join(config['path']['ref'],
+                           config['database_file']['snodb'])
+    output:
+        associated_snoDB = join(config['path']['final'],
+                                config['database_file']['final_snodb'])
+    conda:
+        "envs/python.yaml"
+    script:
+        "scripts/create_final_snoDB.py"
+
+
+include: "rules/test.smk"

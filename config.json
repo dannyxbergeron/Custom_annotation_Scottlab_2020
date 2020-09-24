@@ -12,7 +12,8 @@
         "bed": "data/bed",
         "to_add_gtf": "data/to_add",
         "to_remove_gtf": "data/to_remove",
-        "final": "data/final"
+        "final": "data/final",
+        "test": "data/test"
     },
     "gtf":
     {
@@ -32,6 +33,9 @@
       "gtf_blockbuster": "blockbuster.gtf",
       "gtf_snoRNA": "snoRNA.gtf",
       "rRNA_remove_gtf": "rRNA_id.txt",
-      "snoRNA_remove_gtf": "snoRNA_id.txt"
+      "snoRNA_remove_gtf": "snoRNA_id.txt",
+      "parsed_final": "Ensembl_V101_Scottlab_2020.tsv",
+      "parsed_final_gene_only": "Ensembl_V101_Scottlab_2020_genes.tsv",
+      "final_snodb": "snoDB1.1.1_for_Ensembl_V101_Scottlab_2020.tsv"
     }
 }

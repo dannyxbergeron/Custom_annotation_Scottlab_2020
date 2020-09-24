@@ -1,0 +1,62 @@
+######################################################################
+README for GRCh38 annotation files
+Last updated: July 1, 2020
+######################################################################
+
+The files provided in this directory are symlinks to the latest
+assembly and annotation data available for the human GRCh38 assembly.
+
+The latest version of the GRCh38 assembly is:
+assembly name: GRCh38.p13
+assembly accession: GCF_000001405.39
+URL: https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.39/
+
+The latest genome annotation available is:
+assembly: GRCh38.p13
+type: Update annotation (current known RefSeqs + models)
+name: Homo sapiens Annotation Release 109.20200522
+known RefSeqs from: 5-22-2020
+model RefSeqs from: Annotation Release 109
+
+files:
+GRCh38_latest_genomic.fna.gz
+GRCh38_latest_genomic.gff.gz
+GRCh38_latest_genomic.gtf.gz
+----------------------------
+Files with genomic sequence in FASTA format and annotation in GFF3 or GTF format
+for the latest annotated version of the GRCh38 assembly.
+
+GRCh38_latest_protein.faa.gz
+GRCh38_latest_protein.gpff.gz
+GRCh38_latest_rna.fna.gz
+GRCh38_latest_rna.gbff.gz
+----------------------------
+Files corresponding to the set of RefSeq RNA transcripts and proteins
+annotated on the latest version of the GRCh38 assembly. Note some RefSeq
+transcripts and proteins found in these files may not correspond to the
+latest versions available in Entrez due to ongoing curation.
+
+GRCh38_latest_knownrefseq_alignments.bam
+GRCh38_latest_knownrefseq_alignments.bam.bai
+GRCh38_latest_modelrefseq_alignments.bam
+GRCh38_latest_modelrefseq_alignments.bam.bai
+----------------------------
+Files corresponding to alignments of known RefSeq transcripts (NM_* and
+NR_* accession prefixes) and model RefSeq transcripts (XM_* and XR_* accession
+prefixes) to the latest annotated version of the GRCh38 assembly.
+
+Additional information about the genome annotation and alignment files
+is available at:
+ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/README
+
+
+ClinVar annotation files are updated monthly:
+FTP: ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/
+
+The latest dbSNP annotation available is:
+build: dbSNP human build 154 (b154)
+release date: 6-1-2020
+FTP: ftp://ftp.ncbi.nlm.nih.gov/snp/latest_release/VCF/
+
+dbVar annotation files are updated periodically:
+FTP: ftp://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/GRCh38/gvf/

@@ -1,0 +1,3 @@
+Taken from the article "Reducing the structure bias of RNA-Seq reveals a large
+number of non-annotated non-coding RNA" (PMID: 31980822). The data is a
+supplementary table with the best blockbuster hits.

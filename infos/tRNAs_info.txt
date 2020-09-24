@@ -1,0 +1,2 @@
+The bed file was taken from http://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/Hsapi38-gene-list.html
+and from the Download tRNAscan-SE Results

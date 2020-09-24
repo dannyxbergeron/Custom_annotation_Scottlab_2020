@@ -1,0 +1,37 @@
+{
+    "download":
+    {
+      "ensembl": "ftp://ftp.ensembl.org/pub/release-101/gtf/homo_sapiens/Homo_sapiens.GRCh38.101.gtf.gz",
+      "refseq": "https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_genomic.gtf.gz",
+      "snodb": "http://scottgroup.med.usherbrooke.ca/snoDB/csv"
+    },
+    "path":
+    {
+        "ref": "data/references",
+        "parsed_gtf": "data/parsed_gtf",
+        "bed": "data/bed",
+        "to_add_gtf": "data/to_add",
+        "to_remove_gtf": "data/to_remove",
+        "final": "data/final"
+    },
+    "gtf":
+    {
+        "ensembl": "Ensembl_V101",
+        "refseq": "Refseq_latest",
+        "current_custom": "human_ensembl_87_wo_dup_v3.BB_v3",
+        "final": "Ensembl_V101_Scottlab_2020"
+    },
+    "database_file":
+    {
+      "snodb": "snodb.tsv",
+      "tRNAs": "hg38-tRNAs.bed",
+      "blockbuster": "blockbuster.tsv",
+      "blockbuster_bed": "blockbuster.bed",
+      "gtf_tRNAs": "hg38-tRNAs.gtf",
+      "gtf_rRNAs": "rRNAs.gtf",
+      "gtf_blockbuster": "blockbuster.gtf",
+      "gtf_snoRNA": "snoRNA.gtf",
+      "rRNA_remove_gtf": "rRNA_id.txt",
+      "snoRNA_remove_gtf": "snoRNA_id.txt"
+    }
+}

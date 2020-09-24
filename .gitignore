@@ -1,0 +1,5 @@
+# Snakemake files
+.snakemake
+
+# Data folders
+data/

@@ -26,7 +26,7 @@ def load_df(file):
 
 def load_snodb(file):
 
-    chromosomes = [f'chr{x}' for x in range(1,23)] + ['chrX', 'chrY']
+    chromosomes = [f'chr{x}' for x in range(1,23)] + ['chrX', 'chrY', 'chrMT']
 
     df = pd.read_csv(file, sep='\t')
     df.chr = 'chr' + df.chr
@@ -149,10 +149,10 @@ def create_snoRNA_gtf(df, out_file):
     for chr, start, end, gene_id, gene_name, strand, source, biotype in df.values:
 
         id = f'gene_id "{gene_id}";'
-        transcript_id = f'transcript_id "{gene_id}";'
+        transcript_id = f'transcript_id "{gene_id}-201";'
         exon_id = f'exon_id "{gene_id}";'
         name = f'gene_name "{gene_name}";'
-        transcript_name = f'transcript_name "{gene_name}";'
+        transcript_name = f'transcript_name "{gene_name}-201";'
         gene_source = f'gene_source "{source}";'
         transcript_source = f'transcript_source "{source}";'
         gene_biotype = f'gene_biotype "{biotype}";'

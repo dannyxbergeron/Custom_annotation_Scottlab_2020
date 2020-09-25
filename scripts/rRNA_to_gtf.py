@@ -75,9 +75,7 @@ def create_to_add_file(missing_df, refid_geneId_dict):
         chr = chr.replace('chr', '')
         refseq_id = refid_geneId_dict[gene_id]
         id = f'gene_id "{refseq_id}";'
-        transcript_id = f'transcript_id "{refseq_id}";'
         name = f'gene_name "{gene_name}";'
-        transcript_name = f'transcript_name "{gene_name}";'
 
         # For the gene
         att_list = [id, gene_version, name, gene_source, gene_biotype]
@@ -86,19 +84,36 @@ def create_to_add_file(missing_df, refid_geneId_dict):
         master_list.append(merge)
 
         # For the transcript
-        att_list = [id, gene_version, transcript_id, transcript_version,
-                    name, gene_source, gene_biotype,
-                    transcript_name, transcript_source, transcript_biotype, tag, tsl]
-        attributes = ' '.join(att_list)
-        merge = [chr, source, 'transcript', start, end, score, strand, frame, attributes]
-        master_list.append(merge)
+        for i in range(1,3):
+            transcript_id = f'transcript_id "{refseq_id}-20{i}";'
+            transcript_name = f'transcript_name "{gene_name}-20{i}";'
+            att_list = [id, gene_version, transcript_id, transcript_version,
+                        name, gene_source, gene_biotype,
+                        transcript_name, transcript_source, transcript_biotype, tag, tsl]
+            attributes = ' '.join(att_list)
+            merge = [chr, source, 'transcript', start, end, score, strand, frame, attributes]
+            master_list.append(merge)
+
+            if i == 1:
+                # Full exon
+                exon_id = f'exon_id "{gene_name}";'
+                exon_number = 'exon_number "1";'
+
+                att_list = [id, gene_version, transcript_id, transcript_version,
+                            exon_number,
+                            name, gene_source, gene_biotype,
+                            transcript_name, transcript_source, transcript_biotype,
+                            exon_id, exon_version,
+                            tag, tsl]
+                attributes = ' '.join(att_list)
+                merge = [chr, source, 'exon', start, end, score, strand, frame, attributes]
+                master_list.append(merge)
 
         # For the exons (18S, 28S and 5.8S)
         exons = matrix[:,6:-1]
         count = 1
         for _, exon_start, exon_end, exon_id, exon_name, _ in exons:
-            refseq_id_exon = refid_geneId_dict[exon_id]
-            exon_id = f'exon_id "{refseq_id_exon}";'
+            exon_id = f'exon_id "{exon_name}";'
             exon_number = f'exon_number "{count}";'
 
             att_list = [id, gene_version, transcript_id, transcript_version,

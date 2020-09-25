@@ -36,8 +36,8 @@ def create_tRNA_gtf(df):
         master_list.append(merge)
 
         # for transcript
-        transcript_id = f'transcript_id "{id}";'
-        transcript_name = f'transcript_name "{id}";'
+        transcript_id = f'transcript_id "{id}-201";'
+        transcript_name = f'transcript_name "{id}-201";'
         att_list = [gene_id, gene_version, transcript_id, transcript_version,
                     gene_name, gene_source, gene_biotype, transcript_name,
                     transcript_source, transcript_biotype, tag, tsl]

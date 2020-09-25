@@ -20,7 +20,7 @@
         "ensembl": "Ensembl_V101",
         "refseq": "Refseq_latest",
         "current_custom": "human_ensembl_87_wo_dup_v3.BB_v3",
-        "final": "Ensembl_V101_Scottlab_2020"
+        "final": "hg38_Ensembl_V101_Scottlab_2020"
     },
     "database_file":
     {
@@ -34,8 +34,8 @@
       "gtf_snoRNA": "snoRNA.gtf",
       "rRNA_remove_gtf": "rRNA_id.txt",
       "snoRNA_remove_gtf": "snoRNA_id.txt",
-      "parsed_final": "Ensembl_V101_Scottlab_2020.tsv",
-      "parsed_final_gene_only": "Ensembl_V101_Scottlab_2020_genes.tsv",
-      "final_snodb": "snoDB1.1.1_for_Ensembl_V101_Scottlab_2020.tsv"
+      "parsed_final": "hg38_Ensembl_V101_Scottlab_2020.tsv",
+      "parsed_final_gene_only": "hg38_Ensembl_V101_Scottlab_2020_genes.tsv",
+      "final_snodb": "snoDB1.1.1_for_hg38_Ensembl_V101_Scottlab_2020.tsv"
     }
 }

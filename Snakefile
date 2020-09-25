@@ -156,9 +156,10 @@ rule create_final_annotation:
         "grep '^#!' {output.final_gtf} > data/tmp && "
         "echo '#!snoDB-version 1.1.1' >> data/tmp && "
         "grep -v '^#!' {output.final_gtf} >> data/tmp && "
-        "mv data/tmp {output.final_gtf} && "
         "cat {input.tRNA_gtf} {input.rRNA_gtf} "
-        "{input.blockbuster_gtf} {input.sno_gtf} >> {output.final_gtf}"
+        "{input.blockbuster_gtf} {input.sno_gtf} >> data/tmp && "
+        "python scripts/remove_weird_chr.py data/tmp {output.final_gtf} && "
+        "rm data/tmp"
 
 rule parse_final_gtf:
     """ Parse the final gtf to get a tabular full version and another one just
